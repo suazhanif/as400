@@ -1,0 +1,16 @@
+<odoo>
+
+    <record id="view_move_form_as400" model="ir.ui.view">
+        <field name="name">account.move.form.as400</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <div class="alert alert-info" role="status" invisible="not as400_synced">
+                    Included in an AS400 invoice pull on <field name="as400_synced_date" readonly="1" nolabel="1"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

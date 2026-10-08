@@ -1,0 +1,16 @@
+<odoo>
+
+    <record id="view_asset_mgmt_form_as400" model="ir.ui.view">
+        <field name="name">account.asset.form.as400</field>
+        <field name="model">account.asset</field>
+        <field name="inherit_id" ref="asset_management.view_asset_mgmt_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='tagging_info']" position="inside">
+                <group string="AS400 Integration">
+                    <field name="as400_asset_ref" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

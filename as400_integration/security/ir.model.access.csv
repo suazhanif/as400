@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_as400_config_manager,as400.config.manager,model_as400_config,group_as400_manager,1,1,1,1
+access_as400_api_log_manager,as400.api.log.manager,model_as400_api_log,group_as400_manager,1,0,0,1

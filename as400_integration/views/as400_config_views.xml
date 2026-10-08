@@ -1,0 +1,51 @@
+<odoo>
+
+    <record id="view_as400_config_form" model="ir.ui.view">
+        <field name="name">as400.config.form</field>
+        <field name="model">as400.config</field>
+        <field name="arch" type="xml">
+            <form string="AS400 Integration Configuration">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="company_id" options="{'no_create': True}"/></h1>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <group>
+                        <field name="inbound_api_key" readonly="1"/>
+                        <button name="action_regenerate_key" type="object"
+                                string="Regenerate Key" class="btn-link"
+                                confirm="This will invalidate the current key immediately. AS400 must be updated with the new key. Continue?"/>
+                        <field name="default_location_id"/>
+                        <field name="consumption_location_ids" widget="many2many_tags"/>
+                        <field name="last_consumption_sync"/>
+                        <field name="last_invoice_sync"/>
+                        <field name="last_asset_sync"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_as400_config_list" model="ir.ui.view">
+        <field name="name">as400.config.list</field>
+        <field name="model">as400.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="company_id"/>
+                <field name="active"/>
+                <field name="default_location_id"/>
+                <field name="last_consumption_sync"/>
+                <field name="last_invoice_sync"/>
+                <field name="last_asset_sync"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_as400_config" model="ir.actions.act_window">
+        <field name="name">AS400 Configuration</field>
+        <field name="res_model">as400.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'default_company_id': allowed_company_ids[0]}</field>
+    </record>
+
+</odoo>

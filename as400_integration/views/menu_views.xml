@@ -1,0 +1,12 @@
+<odoo>
+
+    <menuitem id="menu_as400_root" name="AS400 Integration"
+              groups="group_as400_manager" sequence="90"/>
+
+    <menuitem id="menu_as400_config" name="Configuration"
+              parent="menu_as400_root" action="action_as400_config" sequence="10"/>
+
+    <menuitem id="menu_as400_api_log" name="API Log"
+              parent="menu_as400_root" action="action_as400_api_log" sequence="20"/>
+
+</odoo>

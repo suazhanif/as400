@@ -1,0 +1,65 @@
+<odoo>
+
+    <record id="view_as400_api_log_list" model="ir.ui.view">
+        <field name="name">as400.api.log.list</field>
+        <field name="model">as400.api.log</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="status == 'error'" create="false" edit="false">
+                <field name="create_date" string="Date"/>
+                <field name="direction"/>
+                <field name="endpoint"/>
+                <field name="company_id"/>
+                <field name="status" widget="badge"
+                       decoration-danger="status == 'error'"
+                       decoration-success="status == 'success'"/>
+                <field name="http_status"/>
+                <field name="res_model"/>
+                <field name="res_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_as400_api_log_form" model="ir.ui.view">
+        <field name="name">as400.api.log.form</field>
+        <field name="model">as400.api.log</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="direction"/>
+                            <field name="endpoint"/>
+                            <field name="company_id"/>
+                            <field name="status"/>
+                            <field name="http_status"/>
+                        </group>
+                        <group>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Request">
+                            <field name="request_payload" widget="text"/>
+                        </page>
+                        <page string="Response">
+                            <field name="response_payload" widget="text"/>
+                        </page>
+                        <page string="Error" invisible="status != 'error'">
+                            <field name="error_message" widget="text"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_as400_api_log" model="ir.actions.act_window">
+        <field name="name">AS400 API Log</field>
+        <field name="res_model">as400.api.log</field>
+        <field name="view_mode">list,form</field>
+<!--        <field name="search_view_id" ref="view_as400_api_log_search"/>-->
+    </record>
+
+</odoo>
